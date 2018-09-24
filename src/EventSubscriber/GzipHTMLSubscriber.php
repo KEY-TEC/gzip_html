@@ -36,7 +36,9 @@ class GzipHTMLSubscriber implements EventSubscriberInterface {
     // ... and if the browser support encoding.
     $return_compressed = isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE;
     if (in_array(get_class($response), $allowed_response_classes)
-      && $return_compressed == TRUE) {
+      && $return_compressed == TRUE
+      && $response->getStatusCode() == 200
+    ) {
       $content = $response->getContent();
       $compressed = gzencode($content, 9, FORCE_GZIP);
       $response->setContent($compressed);

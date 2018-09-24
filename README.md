@@ -5,7 +5,7 @@ This project gzips your html output if your hoster does not support or does not 
 
 ## Configuration
 
-Enable it under: `admin/config/development/performance`
+    Enable it under: `admin/config/development/performance`
  
 ## WARNING:
 This module is not working together with big_pipe enabled.
